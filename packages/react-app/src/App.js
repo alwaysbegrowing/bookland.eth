@@ -1,8 +1,10 @@
 import React from 'react';
-import { Page, User, Loading, Button, Grid, Spacer, Image } from '@geist-ui/react';
+import { Page, User, Loading, Button, Grid, Spacer } from '@geist-ui/react';
 import useSWR from 'swr';
 import useWeb3Modal from './hooks/useWeb3Modal';
 import WalletButton from './components/WalletButton';
+import SelectNetwork from './components/SelectNetwork';
+import DonateButton from './components/DonateButton';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -23,7 +25,11 @@ function App() {
   return (
     <Page dotBackdrop>
       <Page.Header>
-        <Grid.Container justify='flex-end'>
+        <Grid.Container gap={1} justify='flex-end'>
+          <Grid>
+          <Spacer h={1} />
+            <SelectNetwork />
+          </Grid>
           <Grid>
             <Spacer h={1} />
             <WalletButton
@@ -38,11 +44,12 @@ function App() {
         <User src={data.image} name='Bookland'>
           <User.Link href='https://etherscan.io/address/bookland.eth'>@bookland.eth</User.Link>
         </User>
-        <Button type='secondary' auto>Donate</Button>
-      
+       <DonateButton provider={provider}/>
       </Page.Content>
     </Page>
   );
 }
+
+
 
 export default App;
