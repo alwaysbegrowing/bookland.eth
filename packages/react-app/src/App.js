@@ -28,7 +28,7 @@ function App() {
         <Grid.Container gap={1} justify='flex-end'>
           <Grid>
           <Spacer h={1} />
-            <SelectNetwork />
+            <SelectNetwork provider={provider}/>
           </Grid>
           <Grid>
             <Spacer h={1} />
